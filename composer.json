@@ -15,5 +15,10 @@
       "email": "worstinme@gmail.com"
     }
   ],
-  "minimum-stability": "dev"
+  "minimum-stability": "dev",
+  "autoload": {
+    "psr-4": {
+      "balitrip\\mbtcart\\": ""
+    }
+  }
 }
