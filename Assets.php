@@ -9,10 +9,14 @@ use yii\web\AssetBundle;
  */
 class Assets extends AssetBundle
 {
-    public $sourcePath = '@balitrip/mbtcart/assets';
+    public $sourcePath = '@vendor/balitrip/mbt-cart/assets';
     public $css = [];
 
     public $js = [
         'js/basket.js',
+    ];
+
+    public $depends = [
+        'yii\web\YiiAsset',
     ];
 }

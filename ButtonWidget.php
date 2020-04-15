@@ -3,6 +3,7 @@
 
 namespace balitrip\mbtcart;
 
+use Yii;
 use yii\base\InvalidConfigException;
 use yii\base\Widget;
 use yii\helpers\Html;
@@ -47,7 +48,7 @@ class ButtonWidget extends Widget
         parent::run();
         Assets::register($this->view);
         $this->view->registerJs(new JsExpression('
-            $("body").initBasketButton('.Json::encode($jsOptions).');
+            $("body").initBasketButton('.Json::encode($this->jsOptions).');
         '));
         return Html::button($this->label ?? Yii::t('app', 'Order'), $this->options);
     }

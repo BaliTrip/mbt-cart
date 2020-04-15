@@ -21,7 +21,7 @@
         if (options.beforeSave(item, basketItems)) {
           basketItems.push(item)
         }
-        localStorage.setItem(JSON.stringify(basketItems))
+        localStorage.setItem('basket', JSON.stringify(basketItems))
         $(options.basket_selector).trigger('basket:saved')
       })
     })
