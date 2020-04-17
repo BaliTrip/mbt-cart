@@ -14,16 +14,51 @@
     var self = this
     $(document).ready(function () {
       $(document).on('click', options.button_selector, function (e) {
+        console.log('sent event: basket:add '+ options.basket_selector)
         e.preventDefault()
+        $(options.basket_selector).trigger('basket:add', $(this).data('item'))
+        $(this).addClass('in-busket')
+      })
+    })
+  }
+  $.fn.initBasket = function (options) {
+    options.beforeSave = options.beforeSave || function () { return true }
+    var self = this
+
+    $(document).ready(function () {
+      var getBasketItems = function () {
         basketStorage = localStorage.getItem('basket')
-        basketItems = basketStorage ? JSON.parse(basketStorage) : []
-        var item = $(this).data('item')
+        return basketStorage ? JSON.parse(basketStorage) : []
+      }
+      var getBasketSum = function (items) {
+        items = items || getBasketItems()
+        return items.reduce(function (a, b) {
+          return a + b.price
+        },0)
+      }
+      var refreshBasketInfo = function () {
+        var items = getBasketItems(),
+          html = ''
+        if (items.length) {
+          html = items.length + ' items ' + getBasketSum(items) + ' rp'
+        } else {
+          html = options.empty_message
+        }
+        $(options.selector).find('.basket-info').html(html)
+      }
+
+      $(document).on('basket:add', options.selector, function (event, item) {
+        console.log(item)
+        console.log('received: basket:add')
+        basketItems = getBasketItems()
         if (options.beforeSave(item, basketItems)) {
           basketItems.push(item)
         }
         localStorage.setItem('basket', JSON.stringify(basketItems))
-        $(options.basket_selector).trigger('basket:saved')
+        refreshBasketInfo()
       })
+
+      refreshBasketInfo()
     })
   }
 })(jQuery)
