@@ -45,14 +45,16 @@
     <div class="checkout-deliveries">
       <div class="uk-child-width-1-4@s uk-grid-match" uk-grid>
         <div v-for="delivery in deliveries">
-          <div class="uk-card uk-card-small uk-card-hover uk-card-body" :class="deliveryExists(basketItems, delivery)?'uk-card-primary':'uk-card-default'">
+          <div class="uk-card uk-card-small uk-card-hover uk-card-body"
+               @click.prevent="selectDelivery(delivery)"
+               :class="deliveryExists(basketItems, delivery)?'uk-card-primary':'uk-card-default'">
             <h3 class="uk-card-title">
               <template v-if="deliveryExists(basketItems, delivery)">
                 <span class="uk-float-right">
                   <i class="fa fa-circle"></i>
                 </span>
               </template>
-              <a class="uk-float-right" v-else @click.prevent="selectDelivery(delivery)"><i class="fa fa-circle-o"></i></a>
+              <a class="uk-float-right" v-else><i class="fa fa-circle-o"></i></a>
               {{ delivery.name }}
             </h3>
             <div class="price">{{ delivery.price }} IDR</div>
