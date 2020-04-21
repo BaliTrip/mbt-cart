@@ -45,10 +45,12 @@ class CheckoutWidget extends Widget
         $deliveries = new JsExpression(Json::encode($this->cart->getApiData([
             'company_id' => $this->company_id,
             'key' => 'delivery',
-            'expand'=>'price',
+            'expand' => 'price',
+            'lang' => Yii::$app->language,
         ])));
 
-        $this->view->registerJs("CLIENT_LANG = '".Yii::$app->language."';var API_URL = '{$this->cart->apiUrl}'; var DELIVERIES = $deliveries", $this->view::POS_BEGIN);
+        $this->view->registerJs("CLIENT_LANG = '".Yii::$app->language."';var API_URL = '{$this->cart->apiUrl}'; var DELIVERIES = $deliveries",
+            $this->view::POS_BEGIN);
         CheckoutAssets::register($this->view);
 
         return $this->render('checkout');
