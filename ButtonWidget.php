@@ -38,7 +38,6 @@ class ButtonWidget extends Widget
 
     public function run()
     {
-        parent::run();
         Assets::register($this->view);
         $jsOption = ArrayHelper::merge([
             'basket_selector' => '#basket',
@@ -53,6 +52,7 @@ class ButtonWidget extends Widget
                     'id' => $this->item_id,
                     'price' => $this->item_price,
                     'data' => $this->item_data,
+                    'quantity'=>1
                 ]
             ],
         ]);

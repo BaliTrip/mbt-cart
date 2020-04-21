@@ -54,7 +54,7 @@ class Component extends \yii\base\Component implements BootstrapInterface
 
         if (($data = Yii::$app->cache->get($key)) === false) {
             $response = $this->getClient()->createRequest()
-                ->setUrl('tickets/')
+                ->setUrl('v2/tickets/')
                 ->setMethod('GET')
                 ->setData(array_merge([
                     'access-token' => $this->apiAccessToken,
