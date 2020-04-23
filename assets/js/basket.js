@@ -45,7 +45,13 @@
         }
         localStorage.setItem('basket', JSON.stringify(basketItems))
         $(options.basket_selector).trigger('basket:add', item)
-        $(this).addClass('in-busket')
+        $(this).addClass('in-basket')
+        UIkit.notification({
+          message: options.success_message || 'jsOptions.success_message',
+          status: 'success',
+          pos: 'top-center',
+          timeout: 5000
+        });
       })
     })
   }
