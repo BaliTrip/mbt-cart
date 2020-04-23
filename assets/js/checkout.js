@@ -38,7 +38,10 @@ var app = new Vue({
       if (typeof items === 'array') {
         items = [];
       }
-
+      if (items.length === 1 && items[0].delivery) {
+        this.basketItems = [];
+        items = [];
+      }
       localStorage.setItem('basket', JSON.stringify(items));
     },
     increase: function increase(itemId) {
