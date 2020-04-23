@@ -63,9 +63,9 @@
         var items = getBasketItems(),
           html = ''
         if (items.length) {
-          html = items.length + ' items ' + getBasketSum(items) + ' rp'
+          html = '<span class="items-positions">'+ items.length + '</span><span class="items-sum">' + getBasketSum(items) + ' rp</span>'
         } else {
-          html = options.empty_message
+          html = '<span class="empty">'+options.empty_message+'</span>'
         }
         $(options.selector).find('.basket-info').html(html)
       }
