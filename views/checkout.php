@@ -22,7 +22,7 @@
               ({{ item.data.description }})
             </template>
           </td>
-          <td class="uk-text-right">{{ item.price }} IDR</td>
+          <td class="uk-text-right">{{ numberWithSpaces(item.price) }} IDR</td>
           <td class="uk-text-center">
             <a href="#" @click.prevent="decrease(item.id)"
                class="uk-button uk-button-default uk-button-inverse uk-button-small"
@@ -37,7 +37,8 @@
               <i class="fa fa-plus"></i>
             </a>
           </td>
-          <td class="uk-text-right">{{ item.price * item.quantity }} IDR</td>
+          <td class="uk-text-right">{{ numberWithSpaces(item.price * item.quantity) }} IDR</td>
+          <td class="uk-text-center"><i class="fa fa-trash" @click.prevent="remove(item.id)"></i></td>
         </tr>
       </template>
       </tbody>

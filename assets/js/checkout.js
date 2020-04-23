@@ -108,6 +108,20 @@ var app = new Vue({
           ticketsQuantity: this.ticketsQuantity
         }
       }));
+    },
+    numberWithSpaces: function (x) {
+      if (x) {
+        var parts = x.toString().split(".");
+        parts[0] = parts[0].replace(/\B(?=(\d{3})+(?!\d))/g, " ");
+        return parts.join(".");
+      }
+      return x;
+    },
+    remove: function (itemId) {
+      this.basketItems = this.basketItems.filter(function (item) {
+        return item.id !== itemId;
+      });
+      this.setStorageItems(this.basketItems);
     }
   }
 });
