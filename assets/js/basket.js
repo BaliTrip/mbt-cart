@@ -20,7 +20,14 @@
       return a + b.price * b.quantity
     }, 0)
   }
-
+  var numberWithSpaces = function (x) {
+    if (x) {
+      var parts = x.toString().split(".");
+      parts[0] = parts[0].replace(/\B(?=(\d{3})+(?!\d))/g, " ");
+      return parts.join(".");
+    }
+    return x;
+  }
   $.fn.initBasketButton = function (options) {
     options.beforeSave = options.beforeSave || function () { return true }
     var self = this
@@ -63,7 +70,7 @@
         var items = getBasketItems(),
           html = ''
         if (items.length) {
-          html = '<span class="items-positions">'+ items.length + '</span><span class="items-sum">' + getBasketSum(items) + ' rp</span>'
+          html = '<span class="items-positions">'+ items.length + '</span><span class="items-sum">' + numberWithSpaces(getBasketSum(items)) + ' IDR</span>'
         } else {
           html = '<span class="empty">'+options.empty_message+'</span>'
         }
