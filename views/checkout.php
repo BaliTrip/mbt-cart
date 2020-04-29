@@ -58,7 +58,7 @@
               <a class="uk-float-right" v-else><i class="fa fa-circle-o"></i></a>
               {{ delivery.name }}
             </h3>
-            <div class="price">{{ delivery.price }} IDR</div>
+            <div class="price">{{ numberWithSpaces(delivery.price) }} IDR</div>
             <div>{{ delivery.details }}</div>
           </div>
         </div>
@@ -66,7 +66,7 @@
     </div>
     <hr>
     <div class="checkout-total uk-text-center">
-      <span>{{ total }} IDR</span>
+      <span>{{ numberWithSpaces(total) }} IDR</span>
     </div>
     <div class="checkout-submit uk-text-center uk-margin-top">
       <button class="uk-button uk-button-primary" @click.prevent="checkout"><?= Yii::t('app',
