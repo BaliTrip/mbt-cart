@@ -4,10 +4,8 @@ namespace balitrip\mbtcart;
 
 use Yii;
 use yii\httpclient\Client;
-use worstinme\widgets\Module;
 use yii\base\BootstrapInterface;
 use yii\caching\Cache;
-use yii\data\ArrayDataProvider;
 use yii\web\ServerErrorHttpException;
 
 /**
