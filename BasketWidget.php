@@ -4,12 +4,15 @@
 namespace balitrip\mbtcart;
 
 use Yii;
-use yii\base\InvalidConfigException;
 use yii\base\Widget;
 use yii\helpers\Html;
 use yii\helpers\Json;
 use yii\web\JsExpression;
 
+/**
+ * Class BasketWidget
+ * @package balitrip\mbtcart
+ */
 class BasketWidget extends Widget
 {
     public $jsOptions = [];
@@ -19,6 +22,10 @@ class BasketWidget extends Widget
     public $empty;
     public $checkoutUrl;
 
+    /**
+     * BasketWidget constructor.
+     * @param array $config
+     */
     public function __construct($config = [])
     {
         if (!isset($config['empty'])) {
@@ -39,6 +46,9 @@ class BasketWidget extends Widget
         parent::init();
     }
 
+    /**
+     * @return string
+     */
     public function run()
     {
         Assets::register($this->view);
