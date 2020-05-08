@@ -1,6 +1,5 @@
 <?php
 
-
 namespace balitrip\mbtcart;
 
 use Yii;
