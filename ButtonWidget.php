@@ -11,6 +11,10 @@ use yii\helpers\Html;
 use yii\helpers\Json;
 use yii\web\JsExpression;
 
+/**
+ * Class ButtonWidget
+ * @package balitrip\mbtcart
+ */
 class ButtonWidget extends Widget
 {
     public $jsOptions = [];
@@ -20,6 +24,11 @@ class ButtonWidget extends Widget
     public $item_data;
     public $item_price = 0;
 
+    /**
+     * ButtonWidget constructor.
+     * @param array $config
+     * @throws InvalidConfigException
+     */
     public function __construct($config = [])
     {
         if (!isset($config['item_id'])) {
@@ -27,6 +36,7 @@ class ButtonWidget extends Widget
         }
         parent::__construct($config);
     }
+
 
     public function init()
     {
@@ -36,6 +46,9 @@ class ButtonWidget extends Widget
         parent::init();
     }
 
+    /**
+     * @return string
+     */
     public function run()
     {
         Assets::register($this->view);
