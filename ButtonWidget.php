@@ -20,6 +20,7 @@ class ButtonWidget extends Widget
     public $label;
     public $options = [];
     public $item_id;
+    public $item_currency = 'IDR';
     public $item_data;
     public $item_price = 0;
 
@@ -63,8 +64,9 @@ class ButtonWidget extends Widget
                 'item' => [
                     'id' => $this->item_id,
                     'price' => $this->item_price,
+                    'currency' => $this->item_currency,
                     'data' => $this->item_data,
-                    'quantity'=>1
+                    'quantity' => 1
                 ]
             ],
         ]);

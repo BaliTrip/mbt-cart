@@ -22,7 +22,7 @@
               ({{ item.data.description }})
             </template>
           </td>
-          <td class="uk-text-right">{{ numberWithSpaces(item.price) }} IDR</td>
+          <td class="uk-text-right">{{ numberWithSpaces(item.price) }} <?= $currency ?></td>
           <td class="uk-text-center">
             <a href="#" @click.prevent="decrease(item.id)"
                class="uk-button uk-button-default uk-button-inverse uk-button-small"
@@ -37,7 +37,7 @@
               <i class="fa fa-plus"></i>
             </a>
           </td>
-          <td class="uk-text-right">{{ numberWithSpaces(item.price * item.quantity) }} IDR</td>
+          <td class="uk-text-right">{{ numberWithSpaces(item.price * item.quantity) }} <?= $currency ?></td>
           <td class="uk-text-center"><i class="fa fa-trash" @click.prevent="remove(item.id)"></i></td>
         </tr>
       </template>
@@ -58,7 +58,7 @@
               <a class="uk-float-right" v-else><i class="fa fa-circle-o"></i></a>
               {{ delivery.name }}
             </h3>
-            <div class="price">{{ numberWithSpaces(delivery.price) }} IDR</div>
+            <div class="price">{{ numberWithSpaces(delivery.price) }} <?= $currency ?></div>
             <div>{{ delivery.details }}</div>
           </div>
         </div>
@@ -69,8 +69,9 @@
       <span>{{ numberWithSpaces(total) }} IDR</span>
     </div>
     <div class="checkout-submit uk-text-center uk-margin-top">
-      <button class="uk-button uk-button-primary" @click.prevent="checkout"><?= Yii::t('app',
-              'CHECKOUT_SUMBIT') ?></button>
+      <button class="uk-button uk-button-primary" @click.prevent="checkout">
+          <?= Yii::t('app', 'CHECKOUT_SUMBIT') ?>
+      </button>
     </div>
   </template>
   <div v-else>

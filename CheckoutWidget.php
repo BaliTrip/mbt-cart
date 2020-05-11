@@ -6,7 +6,6 @@ namespace balitrip\mbtcart;
 use Yii;
 use yii\base\InvalidConfigException;
 use yii\base\Widget;
-use yii\helpers\Html;
 use yii\helpers\Json;
 use yii\web\JsExpression;
 
@@ -15,15 +14,20 @@ use yii\web\JsExpression;
  * @package balitrip\mbtcart
  *
  * @property Component $cart
+ * @property array $options
+ * @property string $currency Currency sign
+ * @property int $company_id
  */
 class CheckoutWidget extends Widget
 {
     public $options = [];
     public $component = 'cart';
+    public $currency = 'IDR';
     public $company_id;
 
     /**
-     * @return Component
+     * @return null|object
+     * @throws InvalidConfigException
      */
     protected function getCart()
     {
@@ -38,6 +42,11 @@ class CheckoutWidget extends Widget
         parent::init();
     }
 
+    /**
+     * @return string
+     * @throws InvalidConfigException
+     * @throws \yii\web\ServerErrorHttpException
+     */
     public function run()
     {
         $this->view->registerJsFile(YII_ENV_DEV ? 'https://cdn.jsdelivr.net/npm/vue/dist/vue.js' : 'https://cdn.jsdelivr.net/npm/vue@2.6.11');
@@ -53,6 +62,6 @@ class CheckoutWidget extends Widget
             $this->view::POS_BEGIN);
         CheckoutAssets::register($this->view);
 
-        return $this->render('checkout');
+        return $this->render('checkout', ['currency' => $this->currency]);
     }
 }
