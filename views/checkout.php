@@ -29,7 +29,7 @@
                :class="{'uk-disabled': item.quantity == 1}">
               <i class="fa fa-minus"></i>
             </a>
-            <div class="uk-button">
+            <div class="uk-button checkout-number">
               {{ item.quantity }}
             </div>
             <a href="#" @click.prevent="increase(item.id)"
